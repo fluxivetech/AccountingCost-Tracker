@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+}
+
+/*Background color*/
+#grad1 {
+    background-color: #337589;
+    background-image: linear-gradient(120deg, #337589, #1f4652);
+}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin: auto;
+    width: 100%;
+}
+
+#msform fieldset .form-card {
+    background: #F5F8F9;
+    border-radius: 10px;
+    border: 0 none;
+    border-radius: 0px;
+    /* box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2); */
+    padding: 30px;
+    box-sizing: border-box;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+#msform fieldset {
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#msform fieldset .form-card {
+    text-align: left;
+    color: #9E9E9E;
+}
+
+#msform input, #msform textarea {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border: 2px solid #357787;
+    border-radius: 3px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    font-weight: bold;
+    border: 2px solid #25535f;
+    outline: none;
+    outline-width: 0;
+    border-radius: 3px;
+}
+
+/*Blue Buttons*/
+#msform .action-button {
+    width: 120px;
+    font-family: findi-bold;
+    background: #357787;
+    font-weight: bold;
+    color: #F2F3F5;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 15px 15px;
+    border-radius: 5px;
+}
+
+
+/*Previous Buttons*/
+#msform .action-button-previous {
+    width: 120px;
+    font-family: findi-bold;
+    background: #25535f;
+    font-weight: bold;
+    color: #F2F3F5;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 15px 15px;
+    border-radius: 5px;
+}
+
+
+
+/*Dropdown List Exp Date*/
+select.list-dt {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px;
+}
+
+select.list-dt:focus {
+    border-bottom: 2px solid skyblue;
+}
+
+/*The background card*/
+.card {
+    z-index: 0;
+    border: none;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+/*FieldSet headings*/
+.fs-title {
+    font-size: 25px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+}
+
+#progressbar .active {
+    color: #000000;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 12px;
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+/*Icons in the ProgressBar*/
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f023";
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007";
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f09d";
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+/*ProgressBar before any progress*/
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #F2F3F5;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: skyblue;
+}
+
+/*Imaged Radio Buttons*/
+.radio-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.radio {
+    display:inline-block;
+    width: 204;
+    height: 104;
+    border-radius: 0;
+    background: lightblue;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor:pointer;
+    margin: 8px 2px; 
+}
+
+.radio:hover {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.radio.selected {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/*Fit image in bootstrap div*/
+.fit-image{
+    width: 100%;
+    object-fit: cover;
+}
+    </style>
+    
+    <style>
+        @font-face {
+            font-family: findi-bold;
+            src: url(assets/fonts/Findi-Bold.woff2);
+        }
+        .calculator {
+            max-width: 1200px;
+            width: 100%;
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            /* background-color: #F5F8F9; */
+        }
+        .heading h1, h2, h4,h5,h6, p {
+            text-align: left;
+            padding: 0 !important;
+            color: #F2F3F5;
+            font-family: findi-bold;
+            padding: 20px;
+        }
+        h2.fs-title {
+            color: #4f5b87;
+            font-size: 2em;
+        }
+        h3.fs-title {
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.45;
+        }
+        .heading {
+            padding-bottom: 20px !important;
+        }
+        .accounting-body button {
+            color: #F2F3F5;
+            width: 45%;
+            height: 50px;
+            font-style: normal;
+            font-weight: 500;
+            border-width: 0px;
+            border-radius: 5px;
+            background-color: #357787;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        fieldset {
+            background-color: #F5F8F9;
+            overflow: hidden;
+        }
+        button:hover, .action-button:hover {
+            background: #25535f;
+        }
+        .accounting-body .ccurrent-cost {
+            padding: 15px;
+            outline: none;
+            border: 1px solid red;
+        }
+        input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        }
+        .accounting-body__input {
+            display: flex;
+            align-items: center;
+            min-height: 185px;
+            width: 60%;
+            float: left;
+        }
+        .accounting-body__input input {
+            padding: 20px;
+            margin: 0 30px;
+            width: 60%;
+        }
+        .accounting-body__banner {
+            width: 40%;
+            float: right;
+            text-align: center;
+        }
+        .accounting-body__banner img {
+            width: 300px;
+        }
+        .accounting-body__input label {
+            color: #000000;
+            font-size: 1.5em;
+            font-style: normal;
+            font-weight: 500;
+        }
+        #result1, #result2, #result3 {
+            background-image: url('assets/images/result1bg.png');
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover; /* Resize the background image to cover the entire container */
+            background-size: 100% 100%;
+        }
+        #result1 .form-card, #result2 .form-card, #result3 .form-card {
+            width: 100%;
+            background: transparent !important;
+        }
+        .ac-title {
+            color: rgb(79, 91, 135);
+            font-size: 1.5em;
+            font-family: findi-bold;
+            width: 436px;
+            text-align: right;
+        }
+        .ac-desc {
+            color: #ffffff;
+            width: 100%;
+            font-size: 25px;
+            font-style: normal;
+            text-align: center;
+            font-weight: 400;
+            line-height: 1.45;
+            margin-right: -50px;
+            margin-bottom: 20px;
+            font-family: findi-bold;
+        }
+        .ac-link a {
+            display: block;
+            color: #F2F3F5;
+            /* width: 45%; */
+            /* height: 50px; */
+            font-style: normal;
+            font-weight: 600;
+            /* border-width: 0px; */
+            border-radius: 10px;
+            /* margin-bottom: -20px; */
+            background-color: #357787;
+            text-decoration: none;
+            max-width: 240px;
+            padding: 16px;
+            font-size: 18px;
+            text-align: none;
+            font-family: findi-bold;
+            margin: auto;
+        }
+        .ac-amount {
+            color: #ecc258;
+        }
+        .ac-result-body {
+            max-width: 75%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- MultiStep Form -->
+    <div class="calculator" id="calculator">
+
+        <form id="msform" action="#">
+            
+            <fieldset>
+                <div class="form-card">
+                    <div class="heading">
+                        <h2 class="fs-title">Bereken hieronder direct je voordeel</h2>
+                        <h3 class="fs-title">Ontdek in minder dan een minuut hoeveel je kunt besparen door over te stappen naar Findi</h3>
+                    </div>
+                    <div class="accounting-body">
+                        <button type="button" class="accounting-yes">Ja, ik heb al een boekhouder</button>
+                        <button type="button" class="accounting-no">Nee, ik heb nog geen boekhouder</button>
+                        <input type="hidden" class="accounting" name="accounting" value="">
+                    </div>
+                </div>
+                <input type="button" name="next" class="next action-button" value="Volgende"/>
+            </fieldset>
+            <fieldset>
+                <div class="form-card">
+                    <div class="heading">
+                        <h2 class="fs-title">Wat zijn je huidige kosten?</h2>
+                        <h3 class="fs-title">Vul hieronder in hoeveel je op jaarbasis betaalt aan je boekhouder of administratiekantoor.</h3>
+                    </div>
+                    <div class="accounting-body">
+                        <div class="accounting-body__input">
+                            <input type="number" placeholder="" id="current-cost" class="current-cost"/>
+                            <label for="current-cost">per jaar</label>
+                        </div>
+                        <div class="accounting-body__banner">
+                            <img src="assets/images/report.png" alt="report">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Vorige"/>
+                <input type="button" name="next" class="next action-button" value="Volgende"/>
+            </fieldset>
+            <fieldset>
+                <div class="form-card">
+                    <div class="heading">
+                        <h2 class="fs-title">Hoeveel transacties heb je jaarlijks?</h2>
+                        <h3 class="fs-title">Geef een schatting van het totale aantal bij- en afschrijvingen dat je bedrijf jaarlijks heeft.</h3>
+                    </div>
+                    <div class="accounting-body">
+                        <div class="accounting-body__input">
+                            <input type="number" placeholder="" id="transaction" class="transaction"/>
+                            <label for="transaction">transacties per jaar</label>
+                        </div>
+                        <div class="accounting-body__banner">
+                            <img src="assets/images/transaction.png" alt="transaction">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Vorige"/>
+                <input type="button" name="make_payment" class="next action-button" value="Bevestigen"/>
+            </fieldset>
+            <fieldset id="result1">
+                <div class="form-card">
+                    <h2 class="fs-title text-center ac-title">Gefeliciteerd!</h2>
+                    <br><br>
+                    <div class="row justify-content-center ac-result-body">
+                        <div class="col-12">
+                            <div class="col-12 text-center">
+                                <h3 class="ac-desc">Stap over naar Findi en bespaar <strong class="ac-amount">€1100.00</strong> op jaarbasis</h3>                                                        </h3>
+                            </div>
+                            <div class="col-12 text-center ac-link">
+                                <a href="#">Kennismaking inplannen</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </fieldset>
+            <fieldset id="result2">
+                <div class="form-card">
+                    <h2 class="fs-title text-center ac-title">Wees welkom!</h2>
+                    <br><br>
+                    <div class="row justify-content-center ac-result-body">
+                        <div class="col-12">
+                            <div class="col-12 text-center">
+                                <h3 class="ac-desc">Voor slechts <strong class="ac-amount">€1100.00</strong> per maand regelt findi voortaan je administratie</h3>
+                            </div>
+                            <div class="col-12 text-center ac-link">
+                                <a href="#">Kennismaking inplannen</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </fieldset>
+            <fieldset id="result3">
+                <div class="form-card">
+                    <h2 class="fs-title text-center ac-title">Wees welkom!</h2>
+                    <br><br>
+                    <div class="row justify-content-center ac-result-body">
+                        <div class="col-12">
+                            <div class="col-12 text-center">
+                                <h3 class="ac-desc">Voor <strong class="ac-amount">€1100.00</strong> per maand extra profiteer jij ook van de service van findi</h3>
+                            </div>
+                            <div class="col-12 text-center ac-link">
+                                <a href="#">Kennismaking inplannen</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </fieldset>
+        </form>
+    </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function(){
+    
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+
+        $(".next").click(function(){
+            
+            var accounting = parseInt($(".accounting").val());
+            var cost = parseInt($("#current-cost").val());
+            var trans = parseInt($("#transaction").val());
+
+            if( isNaN(accounting) ) {
+                return false;
+            }
+            if( $(this).parent().index() == 1 && accounting == 1 && isNaN(cost) ) {
+                return false;
+            }
+             if( $(this).parent().index() == 2 && accounting == 1 && isNaN(trans) ) {
+                return false;
+            }
+            if( $(this).parent().index() == 2 && accounting == 0 && isNaN(trans) ) {
+                return false;
+            }
+
+            current_fs = $(this).parent();
+            if( accounting == 0 ) {
+                next_fs = $(this).parent().next().next();
+            } else {
+                next_fs = $(this).parent().next();
+            }
+            
+           
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            // calculation 
+            
+
+            var findi_cost_up_80 = 660;
+            var findi_cost_up_170 = 900;
+            var findi_cost_up_250 = 1080;
+            var findi_cost_up_500 = 1440;
+            var findi_cost_up_800 = 1740;
+            var findi_cost_up_1200 = 2160;
+            var findi_cost_up_1750 = 2520;
+
+            var save = '';
+
+           if( accounting == 1 ) {
+                if( trans <= 80 ) {
+                    save = (cost - findi_cost_up_80 );
+                }
+                if( trans > 80 && trans <= 170 ) {
+                    save = (cost - findi_cost_up_170 );
+                }
+                if( trans > 170 && trans <= 250 ) {
+                    save = (cost - findi_cost_up_250 );
+                }
+                if( trans > 250 && trans <= 500 ) {
+                    save = (cost - findi_cost_up_500 );
+                }
+                if( trans > 500 && trans <= 800 ) {
+                    save = (cost - findi_cost_up_800 );
+                }
+                if( trans > 800 && trans <= 1200 ) {
+                    save = (cost - findi_cost_up_1200 );
+                }
+                if( trans > 1200 && trans <= 1750 ) {
+                    save = (cost - findi_cost_up_1750 );
+                }
+            
+            if( save !== "" && save < 0 ) {
+                if( trans <= 80 ) {
+                    save = 55;
+                }
+                if( trans > 80 && trans <= 170 ) {
+                    save = 75;
+                }
+                if( trans > 170 && trans <= 250 ) {
+                    save = 90;
+                }
+                if( trans > 250 && trans <= 500 ) {
+                    save = 120;
+                }
+                if( trans > 500 && trans <= 800 ) {
+                    save = 145;
+                }
+                if( trans > 800 && trans <= 1200 ) {
+                    save = 180;
+                }
+                if( trans > 1200 && trans <= 1750 ) {
+                    save = 210;
+                }
+                next_fs = $(this).parent().next().next().next();
+            }
+               
+           }
+           if( accounting == 0 ) {
+                if( trans <= 80 ) {
+                    save = 55;
+                }
+                if( trans > 80 && trans <= 170 ) {
+                    save = 75;
+                }
+                if( trans > 170 && trans <= 250 ) {
+                    save = 90;
+                }
+                if( trans > 250 && trans <= 500 ) {
+                    save = 120;
+                }
+                if( trans > 500 && trans <= 800 ) {
+                    save = 145;
+                }
+                if( trans > 800 && trans <= 1200 ) {
+                    save = 180;
+                }
+                if( trans > 1200 && trans <= 1750 ) {
+                    save = 210;
+                }
+                next_fs = $(this).parent().next().next();
+            }
+
+            $(".ac-amount").text("€" + save + ".00");
+
+
+
+
+
+
+            
+            
+            //show the next fieldset
+            next_fs.show(); 
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({'opacity': opacity});
+                }, 
+                duration: 600
+            });
+        });
+
+    $(".previous").click(function(){
+        var accounting = parseInt($(".accounting").val());
+        current_fs = $(this).parent();
+        if( accounting == 0 ) {
+            previous_fs = $(this).parent().prev().prev();
+        } else {
+            previous_fs = $(this).parent().prev();
+        }
+        
+        //Remove class active
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+        
+        //show the previous fieldset
+        previous_fs.show();
+
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                previous_fs.css({'opacity': opacity});
+            }, 
+            duration: 600
+        });
+    });
+
+    $('.radio-group .radio').click(function(){
+        $(this).parent().find('.radio').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
+    $(".submit").click(function(){
+        return false;
+    })
+        
+    });
+    </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            $(".accounting-yes").on("click", function(){
+                $(this).css("background", "#25535f");
+                $(".accounting-no").css("background", "#357787");
+                $(".accounting").val("1");
+            });
+             $(".accounting-no").on("click", function(){
+                $(this).css("background", "#25535f");
+                $(".accounting-yes").css("background", "#357787");
+                $(".accounting").val("0");
+            });
+        });
+    </script>
+</body>
+</html>
