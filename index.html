@@ -139,11 +139,13 @@ select.list-dt:focus {
 
 /*FieldSet headings*/
 .fs-title {
-    font-size: 25px;
-    color: #2C3E50;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: left;
+font-size: 25px;
+color: #2C3E50;
+margin-bottom: 10px;
+font-weight: bold;
+text-align: center;
+width: 775px;
+margin-bottom: 23px;
 }
 
 /*progressbar*/
@@ -258,7 +260,6 @@ select.list-dt:focus {
         .calculator {
             max-width: 1200px;
             width: 100%;
-            height: 100vh;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -275,6 +276,7 @@ select.list-dt:focus {
         h2.fs-title {
             color: #4f5b87;
             font-size: 2em;
+            margin-top: 25px;
         }
         h3.fs-title {
             font-size: 25px;
@@ -296,6 +298,7 @@ select.list-dt:focus {
             background-color: #357787;
             font-size: 18px;
             cursor: pointer;
+            margin-right: 20px;
         }
         fieldset {
             background-color: #F5F8F9;
@@ -315,7 +318,7 @@ select.list-dt:focus {
         .accounting-body__input {
             display: flex;
             align-items: center;
-            min-height: 185px;
+            min-height: 250px;
             width: 60%;
             float: left;
         }
@@ -327,9 +330,9 @@ select.list-dt:focus {
         .accounting-body__banner {
             width: 40%;
             float: right;
-            text-align: center;
+            min-height: 300px;
         }
-        .accounting-body__banner img {
+        .accounting-body__banner img, .accounting-body__banner svg {
             width: 300px;
         }
         .accounting-body__input label {
@@ -339,25 +342,31 @@ select.list-dt:focus {
             font-weight: 500;
         }
         #result1, #result2, #result3 {
-            background-image: url('assets/images/result1bg.png');
+            background-image: url('https://findi.nl/wp-content/uploads/Design-form-findi-02-2.svg');
             background-position: center; /* Center the image */
             background-repeat: no-repeat; /* Do not repeat the image */
             background-size: cover; /* Resize the background image to cover the entire container */
-            background-size: 100% 100%;
+            height: 514px;
+            
+        }
+        #result2, #result3 {
+            background-image: url('https://findi.nl/wp-content/uploads/Design-form-findi-03-2.svg');
+            
         }
         #result1 .form-card, #result2 .form-card, #result3 .form-card {
             width: 100%;
             background: transparent !important;
         }
-        .ac-title {
+        /* .ac-title {
             color: rgb(79, 91, 135);
             font-size: 1.5em;
             font-family: findi-bold;
-            width: 436px;
+            width: 487px;
             text-align: right;
-        }
-        .ac-desc {
-            color: #ffffff;
+            margin-top: 43px;
+            } */
+            .ac-desc {
+            color: #ffffff !important;
             width: 100%;
             font-size: 25px;
             font-style: normal;
@@ -367,7 +376,9 @@ select.list-dt:focus {
             margin-right: -50px;
             margin-bottom: 20px;
             font-family: findi-bold;
-        }
+            max-width: 700px;
+            margin: 20px auto;
+            }
         .ac-link a {
             display: block;
             color: #F2F3F5;
@@ -380,12 +391,13 @@ select.list-dt:focus {
             /* margin-bottom: -20px; */
             background-color: #357787;
             text-decoration: none;
-            max-width: 240px;
+            max-width: 300px;
             padding: 16px;
             font-size: 18px;
             text-align: none;
             font-family: findi-bold;
             margin: auto;
+            text-align: center;
         }
         .ac-amount {
             color: #ecc258;
@@ -393,7 +405,19 @@ select.list-dt:focus {
         .ac-result-body {
             max-width: 75%;
             margin: auto;
+            padding: 30px 0;
+            top: 0;
+            position: absolute;
+            left: 212px;
         }
+        fieldset#result1, fieldset#result2, fieldset#result3 {
+background-color: transparent;
+height: 469px;
+text-align: center;
+margin: auto;
+justify-content: center;
+align-content: center;
+}
     </style>
 </head>
 <body>
@@ -409,9 +433,16 @@ select.list-dt:focus {
                         <h3 class="fs-title">Ontdek in minder dan een minuut hoeveel je kunt besparen door over te stappen naar Findi</h3>
                     </div>
                     <div class="accounting-body">
-                        <button type="button" class="accounting-yes">Ja, ik heb al een boekhouder</button>
-                        <button type="button" class="accounting-no">Nee, ik heb nog geen boekhouder</button>
-                        <input type="hidden" class="accounting" name="accounting" value="">
+                        <div class="accounting-body">
+                        <div class="accounting-body__input">
+                            <button type="button" class="accounting-yes">Ja, ik heb al een boekhouder</button><br>
+                            <button type="button" class="accounting-no">Nee, ik heb nog geen boekhouder</button>
+                            <input type="hidden" class="accounting" name="accounting" value="">
+                        </div>
+                        <div class="accounting-body__banner">
+                                <img src="https://findi.nl/wp-content/uploads/Design-form-findi-02.svg" alt="">
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <input type="button" name="next" class="next action-button" value="Volgende"/>
@@ -428,7 +459,7 @@ select.list-dt:focus {
                             <label for="current-cost">per jaar</label>
                         </div>
                         <div class="accounting-body__banner">
-                            <img src="assets/images/report.png" alt="report">
+                            <img src="https://findi.nl/wp-content/uploads/Design-form-findi-03.svg" alt="">
                         </div>
                     </div>
                 </div>
@@ -447,7 +478,7 @@ select.list-dt:focus {
                             <label for="transaction">transacties per jaar</label>
                         </div>
                         <div class="accounting-body__banner">
-                            <img src="assets/images/transaction.png" alt="transaction">
+                                <img src="https://findi.nl/wp-content/uploads/Design-form-findi-04.svg" alt="">
                         </div>
                     </div>
                 </div>
@@ -455,13 +486,13 @@ select.list-dt:focus {
                 <input type="button" name="make_payment" class="next action-button" value="Bevestigen"/>
             </fieldset>
             <fieldset id="result1">
+                
                 <div class="form-card">
-                    <h2 class="fs-title text-center ac-title">Gefeliciteerd!</h2>
-                    <br><br>
+                    <!-- <h2 class="fs-title text-center ac-title">Gefeliciteerd!</h2> -->
                     <div class="row justify-content-center ac-result-body">
                         <div class="col-12">
                             <div class="col-12 text-center">
-                                <h3 class="ac-desc">Stap over naar Findi en bespaar <strong class="ac-amount">€1100.00</strong> op jaarbasis</h3>                                                        </h3>
+                                <h3 class="ac-desc">Stap over naar Findi en bespaar <strong class="ac-amount">€</strong> op jaarbasis</h3>                                                        </h3>
                             </div>
                             <div class="col-12 text-center ac-link">
                                 <a href="#">Kennismaking inplannen</a>
@@ -473,12 +504,11 @@ select.list-dt:focus {
             </fieldset>
             <fieldset id="result2">
                 <div class="form-card">
-                    <h2 class="fs-title text-center ac-title">Wees welkom!</h2>
-                    <br><br>
+                    <!-- <h2 class="fs-title text-center ac-title">Wees welkom!</h2> -->
                     <div class="row justify-content-center ac-result-body">
                         <div class="col-12">
                             <div class="col-12 text-center">
-                                <h3 class="ac-desc">Voor slechts <strong class="ac-amount">€1100.00</strong> per maand regelt findi voortaan je administratie</h3>
+                                <h3 class="ac-desc">Voor slechts <strong class="ac-amount">€</strong> per maand regelt findi voortaan je administratie</h3>
                             </div>
                             <div class="col-12 text-center ac-link">
                                 <a href="#">Kennismaking inplannen</a>
@@ -490,12 +520,11 @@ select.list-dt:focus {
             </fieldset>
             <fieldset id="result3">
                 <div class="form-card">
-                    <h2 class="fs-title text-center ac-title">Wees welkom!</h2>
-                    <br><br>
+                    <!-- <h2 class="fs-title text-center ac-title">Wees welkom!</h2> -->
                     <div class="row justify-content-center ac-result-body">
                         <div class="col-12">
                             <div class="col-12 text-center">
-                                <h3 class="ac-desc">Voor <strong class="ac-amount">€1100.00</strong> per maand extra profiteer jij ook van de service van findi</h3>
+                                <h3 class="ac-desc">Voor <strong class="ac-amount">€</strong> per maand extra profiteer jij ook van de service van findi</h3>
                             </div>
                             <div class="col-12 text-center ac-link">
                                 <a href="#">Kennismaking inplannen</a>
